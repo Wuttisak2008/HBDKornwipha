@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Python Heart Animation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html,body{
+width:100%;
+height:100%;
+overflow:hidden;
+background:#000;
+}
+
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* Container */
+
+.container{
+width:100%;
+height:100vh;
+display:grid;
+grid-template-columns:60% 40%;
+}
+
+/* Left */
+
+.left{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+overflow:hidden;
+}
+
+canvas{
+position:absolute;
+width:100%;
+height:100%;
+}
+
+/* Glow */
+
+.left::before{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:
+radial-gradient(circle,
+rgba(255,0,120,.25),
+transparent 70%);
+filter:blur(90px);
+animation:pulse 4s infinite;
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(.8);
+opacity:.4;
+}
+
+50%{
+transform:scale(1.2);
+opacity:1;
+}
+
+100%{
+transform:scale(.8);
+opacity:.4;
+}
+
+}
+
+/* Right */
+
+.right{
+
+background:#111;
+
+color:white;
+
+padding:35px;
+
+overflow:auto;
+
+border-left:1px solid rgba(255,255,255,.1);
+
+box-shadow:
+0 0 40px rgba(0,255,255,.1);
+
+}
+
+.right h2{
+
+margin-bottom:20px;
+
+font-size:28px;
+
+font-weight:600;
+
+color:#00ffe0;
+
+text-shadow:
+0 0 20px cyan;
+
+}
+
+.codebox{
+
+background:#181818;
+
+border-radius:15px;
+
+padding:20px;
+
+font-size:15px;
+
+line-height:28px;
+
+color:#ddd;
+
+white-space:pre-wrap;
+
+box-shadow:
+0 0 30px rgba(255,255,255,.05);
+
+overflow:hidden;
+
+}
+
+.keyword{
+color:#6cf;
+}
+
+.import{
+color:#ff79c6;
+}
+
+.number{
+color:#f1fa8c;
+}
+
+.func{
+color:#50fa7b;
+}
+
+.comment{
+color:#777;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.container{
+
+grid-template-columns:1fr;
+
+}
+
+.right{
+
+height:40vh;
+
+}
+
+.left{
+
+height:60vh;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="left">
+
+<canvas id="canvas"></canvas>
+
+</div>
+
+<div class="right">
+
+<h2>Python Code</h2>
+
+<div class="codebox" id="code">
+
+</div>
+
+</div>
+
+</div>  
+  <script>
+
+const pythonCode = `
+import turtle
+import math
+import random
+
+screen = turtle.Screen()
+screen.bgcolor("black")
+
+t = turtle.Turtle()
+t.speed(0)
+t.hideturtle()
+t.pensize(1)
+
+colors = [
+"red",
+"orange",
+"yellow",
+"lime",
+"cyan",
+"blue",
+"magenta",
+"white"
+]
+
+for i in range(360):
+
+    angle = math.radians(i)
+
+    x = 16 * math.sin(angle)**3
+
+    y = 13*math.cos(angle)
+        -5*math.cos(2*angle)
+        -2*math.cos(3*angle)
+        -math.cos(4*angle)
+
+    t.penup()
+
+    t.goto(x*18,y*18)
+
+    t.pendown()
+
+    t.color(random.choice(colors))
+
+    for j in range(8):
+
+        t.forward(6)
+
+        t.backward(6)
+
+        t.right(45)
+
+turtle.done()
+`;
+
+let index=0;
+
+function typeCode(){
+
+const box=document.getElementById("code");
+
+if(index<pythonCode.length){
+
+box.innerHTML+=pythonCode.charAt(index);
+
+index++;
+
+box.scrollTop=box.scrollHeight;
+
+setTimeout(typeCode,15);
+
+}
+
+}
+
+typeCode();
+
+const canvas=document.getElementById("canvas");
+
+const ctx=canvas.getContext("2d");
+
+function resize(){
+
+canvas.width=canvas.offsetWidth;
+
+canvas.height=canvas.offsetHeight;
+
+}
+
+window.addEventListener("resize",resize);
+
+resize();
+
+const particles=[];
+
+function heart(t){
+
+const x=16*Math.pow(Math.sin(t),3);
+
+const y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
+
+return{
+
+x:x,
+
+y:y
+
+};
+
+}
+
+class Star{
+
+constructor(){
+
+this.t=Math.random()*Math.PI*2;
+
+this.color=`hsl(${Math.random()*360},100%,60%)`;
+
+this.size=2+Math.random()*2;
+
+}
+
+draw(){
+
+const p=heart(this.t);
+
+const scale=18;
+
+const x=canvas.width/2+p.x*scale;
+
+const y=canvas.height/2-p.y*scale;
+
+ctx.strokeStyle=this.color;
+
+ctx.lineWidth=1;
+
+for(let i=0;i<8;i++){
+
+ctx.beginPath();
+
+ctx.moveTo(x,y);
+
+const a=i*Math.PI/4;
+
+ctx.lineTo(
+
+x+Math.cos(a)*this.size*3,
+
+y+Math.sin(a)*this.size*3
+
+);
+
+ctx.stroke();
+
+}
+
+}
+
+}
+
+for(let i=0;i<420;i++){
+
+particles.push(new Star());
+
+}
+function animate(){
+
+ctx.fillStyle="rgba(0,0,0,0.15)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.shadowBlur=20;
+
+for(let i=0;i<particles.length;i++){
+
+particles[i].t+=0.003;
+
+if(particles[i].t>Math.PI*2){
+
+particles[i].t=0;
+
+particles[i].color=`hsl(${Math.random()*360},100%,60%)`;
+
+}
+
+ctx.shadowColor=particles[i].color;
+
+particles[i].draw();
+
+}
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+/* Floating Stars */
+
+const bgStars=[];
+
+for(let i=0;i<180;i++){
+
+bgStars.push({
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height,
+
+r:Math.random()*2,
+
+a:Math.random(),
+
+s:Math.random()*0.4+0.1
+
+});
+
+}
+
+function drawBackground(){
+
+for(let s of bgStars){
+
+ctx.beginPath();
+
+ctx.fillStyle=`rgba(255,255,255,${s.a})`;
+
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+
+ctx.fill();
+
+s.y+=s.s;
+
+if(s.y>canvas.height){
+
+s.y=0;
+
+s.x=Math.random()*canvas.width;
+
+}
+
+}
+
+requestAnimationFrame(drawBackground);
+
+}
+
+drawBackground();
+
+</script>
+
+</body>
+</html>
