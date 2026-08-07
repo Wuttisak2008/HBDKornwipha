@@ -23,6 +23,25 @@ html, body {
     color: #fff;
 }
 
+/* Flash Screen Effect */
+#flash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    z-index: 2500;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+#flash-screen.flash {
+    opacity: 1;
+    transition: opacity 0.05s ease;
+}
+
 /* ================= INTRO SCREEN ================= */
 #intro-screen {
     position: fixed;
@@ -319,23 +338,19 @@ canvas#main-canvas {
     box-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
 }
 
-/* ================= PHOTO GALLERY OVERLAY ================= */
+/* ================= FULLSCREEN PHOTO GALLERY ================= */
 .gallery-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1001;
-    background: rgba(5, 5, 8, 0.95);
-    backdrop-filter: blur(15px);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px 15px;
+    z-index: 2000;
+    background: #050508;
     opacity: 0;
     visibility: hidden;
     overflow-y: auto;
+    scroll-behavior: smooth;
     transition: all 0.5s ease;
 }
 
@@ -344,94 +359,140 @@ canvas#main-canvas {
     visibility: visible;
 }
 
-.gallery-container {
-    max-width: 800px;
-    width: 100%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 0 40px 0;
-}
-
-.gallery-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.gallery-header h2 {
-    font-size: 26px;
-    font-weight: 800;
-    background: linear-gradient(45deg, #ff007f, #00f0ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 .gallery-close-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2100;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
     transition: all 0.3s ease;
 }
 
 .gallery-close-btn:hover {
     background: rgba(255, 0, 127, 0.8);
+    transform: rotate(90deg);
 }
 
-/* Main Hero Image */
-.main-photo-wrapper {
+/* SECTION 1: FULL SCREEN PHONE IMAGE HERO */
+.hero-fullscreen {
     width: 100%;
-    max-height: 60vh;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 35px rgba(255, 0, 127, 0.5);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    background: #10111a;
+    height: 100vh;
+    height: 100dvh;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #000;
+    overflow: hidden;
 }
 
-.main-photo-wrapper img {
+.main-photo-card {
     width: 100%;
     height: 100%;
-    max-height: 60vh;
-    object-fit: contain;
-    transition: transform 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-/* Sub Photos Grid */
-.sub-photos-title {
+.main-photo-card img {
     width: 100%;
-    text-align: left;
-    font-size: 18px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: drop-shadow(0 0 20px rgba(255,0,127,0.4));
+}
+
+/* Surprise Shock Animation */
+.surprise-anim {
+    animation: surpriseShock 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes surpriseShock {
+    0% { transform: scale(0.1) rotate(-10deg); opacity: 0; filter: brightness(3) blur(10px); }
+    50% { transform: scale(1.12) rotate(3deg); opacity: 1; filter: brightness(1.5) blur(0); }
+    75% { transform: scale(0.96) rotate(-1deg); }
+    100% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+}
+
+/* Scroll Hint Bar */
+.scroll-hint {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: 1px solid rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    animation: bounceHint 1.8s infinite ease-in-out;
+    pointer-events: none;
+}
+
+.scroll-hint span {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     color: #00f0ff;
-    margin-top: 15px;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+}
+
+.scroll-hint .arrow {
+    font-size: 18px;
+    color: #ff007f;
+}
+
+@keyframes bounceHint {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 12px); }
+}
+
+/* SECTION 2: SUB PHOTOS GRID */
+.sub-photos-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 60px 20px;
+}
+
+.sub-photos-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #00f0ff;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
 }
 
 .sub-photos-grid {
-    width: 100%;
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(110px, 1fr) );
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 15px;
 }
 
 .sub-photo-item {
     aspect-ratio: 1;
-    border-radius: 14px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     border: 2px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     background: #13141f;
 }
 
@@ -443,14 +504,14 @@ canvas#main-canvas {
 }
 
 .sub-photo-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px) scale(1.03);
     border-color: #00f0ff;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
 }
 
 .sub-photo-item.active {
     border-color: #ff007f;
-    box-shadow: 0 0 20px rgba(255, 0, 127, 0.8);
+    box-shadow: 0 0 22px rgba(255, 0, 127, 0.8);
 }
 
 /* Responsive Mobile Layout */
@@ -468,13 +529,16 @@ canvas#main-canvas {
     .wish-card { padding: 25px 20px; }
     .wish-card h3 { font-size: 22px; }
     .wish-card p { font-size: 15px; }
-    .main-photo-wrapper { max-height: 45vh; }
-    .sub-photos-grid { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .scroll-hint span { font-size: 12px; }
+    .sub-photos-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
 }
 </style>
 </head>
 
 <body>
+
+<!-- FLASH SCREEN EFFECT FOR SURPRISE -->
+<div id="flash-screen"></div>
 
 <!-- INTRO COUNTDOWN SCREEN -->
 <div id="intro-screen">
@@ -512,21 +576,24 @@ canvas#main-canvas {
     </div>
 </div>
 
-<!-- PHOTO GALLERY MODAL -->
+<!-- FULLSCREEN PHOTO GALLERY -->
 <div id="gallery-modal" class="gallery-modal">
-    <div class="gallery-container">
-        <div class="gallery-header">
-            <h2>📸 MAY'S MEMORIES</h2>
-            <button class="gallery-close-btn" onclick="closeGalleryModal()">✕</button>
-        </div>
-        
-        <!-- 1 Big Main Featured Photo -->
-        <div class="main-photo-wrapper">
+    <button class="gallery-close-btn" onclick="closeGalleryModal()">✕</button>
+
+    <!-- Section 1: Fullscreen Phone Image -->
+    <div class="hero-fullscreen">
+        <div class="main-photo-card" id="main-photo-card">
             <img id="main-featured-img" src="1.jpg" alt="Memory 1" onerror="this.src='1.png'">
         </div>
+        <div class="scroll-hint">
+            <span>👇 เลื่อนลงข้างล่างเพื่อดูรูปย่อยอื่นๆ นะ ✨</span>
+            <div class="arrow">▼</div>
+        </div>
+    </div>
 
-        <!-- Sub Photos Below -->
-        <div class="sub-photos-title">รูปภาพทั้งหมด (คลิกเพื่อขยาย) ✨</div>
+    <!-- Section 2: Sub Photos Grid -->
+    <div class="sub-photos-section">
+        <div class="sub-photos-title">📸 รูปภาพความทรงจำทั้งหมด</div>
         <div class="sub-photos-grid">
             <div class="sub-photo-item active" onclick="changeMainPhoto('1.jpg', '1.png', this)">
                 <img src="1.jpg" alt="Photo 1" onerror="this.src='1.png'">
@@ -697,7 +764,6 @@ let bgStars = [];
 let bursts = [];
 const TOTAL_PARTICLES = 450;
 
-// Text Typing Animation States
 const fullText = "HBD TO MAY";
 let textCharIndex = 0;
 let textFrameTimer = 0;
@@ -774,11 +840,11 @@ function initMainCanvas() {
 }
 
 function createBurst(x, y) {
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 35; i++) {
         bursts.push({
             x, y,
-            vx: (Math.random() - 0.5) * 10,
-            vy: (Math.random() - 0.5) * 10,
+            vx: (Math.random() - 0.5) * 12,
+            vy: (Math.random() - 0.5) * 12,
             life: 1,
             color: `hsl(${Math.random() * 360}, 100%, 75%)`
         });
@@ -793,7 +859,6 @@ function animateMain() {
     ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Background stars
     ctx.fillStyle = "#fff";
     for (let s of bgStars) {
         ctx.beginPath();
@@ -807,7 +872,6 @@ function animateMain() {
 
     const baseScale = Math.min(canvas.width, canvas.height) / 42;
 
-    // Gradual drawing of heart
     if (drawnCount < TOTAL_PARTICLES) {
         drawnCount += 2;
     }
@@ -820,14 +884,12 @@ function animateMain() {
         p.draw(baseScale, beatScale);
     }
 
-    // Letter-by-letter reveal
     textFrameTimer++;
     if (textFrameTimer % 14 === 0 && textCharIndex < fullText.length) {
         textCharIndex++;
         createBurst(canvas.width / 2, canvas.height / 2);
     }
 
-    // Trigger Wish Button after text finishes writing
     if (textCharIndex >= fullText.length && !wishBtnTriggered) {
         wishBtnTriggered = true;
         setTimeout(() => {
@@ -835,10 +897,8 @@ function animateMain() {
         }, 600);
     }
 
-    // Render Grand Center Text
     drawGrandCenterText(baseScale, beatScale);
 
-    // Particle Bursts
     bursts.forEach((b, idx) => {
         b.x += b.vx;
         b.y += b.vy;
@@ -857,7 +917,6 @@ function animateMain() {
     requestAnimationFrame(animateMain);
 }
 
-/* ================= 5. BIG ANIMATED CENTER TEXT ================= */
 function drawGrandCenterText(scale, beatScale) {
     ctx.save();
     ctx.textAlign = "center";
@@ -895,7 +954,7 @@ function drawGrandCenterText(scale, beatScale) {
     ctx.restore();
 }
 
-/* ================= 6. MODAL & GALLERY FUNCTIONS ================= */
+/* ================= 5. MODAL & GALLERY WITH SURPRISE EFFECT ================= */
 function openWishModal() {
     document.getElementById("wish-modal").classList.add("active");
     createBurst(window.innerWidth / 2, window.innerHeight / 2);
@@ -903,10 +962,35 @@ function openWishModal() {
 
 function closeWishModal() {
     document.getElementById("wish-modal").classList.remove("active");
-    // Open gallery immediately after closing wish modal
+
     setTimeout(() => {
-        document.getElementById("gallery-modal").classList.add("active");
-    }, 300);
+        const gallery = document.getElementById("gallery-modal");
+        const card = document.getElementById("main-photo-card");
+        const flash = document.getElementById("flash-screen");
+
+        // 1. Open Gallery Screen
+        gallery.classList.add("active");
+        gallery.scrollTop = 0; // Ensure start at top image
+
+        // 2. Camera Flash Surprise Effect
+        flash.classList.add("flash");
+        setTimeout(() => flash.classList.remove("flash"), 120);
+
+        // 3. Shock Pop Animation on Image
+        card.classList.remove("surprise-anim");
+        void card.offsetWidth; // Trigger reflow
+        card.classList.add("surprise-anim");
+
+        // 4. Multiple Confetti/Fireworks Explosions
+        for (let i = 0; i < 6; i++) {
+            setTimeout(() => {
+                createBurst(
+                    Math.random() * window.innerWidth,
+                    Math.random() * window.innerHeight
+                );
+            }, i * 120);
+        }
+    }, 250);
 }
 
 function closeGalleryModal() {
@@ -915,8 +999,18 @@ function closeGalleryModal() {
 
 function changeMainPhoto(primarySrc, fallbackSrc, element) {
     const mainImg = document.getElementById("main-featured-img");
+    const card = document.getElementById("main-photo-card");
+
     mainImg.src = primarySrc;
     mainImg.onerror = () => { mainImg.src = fallbackSrc; };
+
+    // Re-trigger animation effect on change
+    card.classList.remove("surprise-anim");
+    void card.offsetWidth;
+    card.classList.add("surprise-anim");
+
+    // Scroll smoothly back to hero image top
+    document.getElementById("gallery-modal").scrollTo({ top: 0, behavior: 'smooth' });
 
     // Highlight active thumbnail
     document.querySelectorAll(".sub-photo-item").forEach(item => item.classList.remove("active"));
