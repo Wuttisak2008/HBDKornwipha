@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>HBD TO MAY - Python Heart</title>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@800;900&family=Mitr:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@800;900&family=Mitr:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -155,6 +155,44 @@ canvas#main-canvas {
     100% { transform: scale(1.25); opacity: 0.9; }
 }
 
+/* Next Wish Button */
+.wish-btn {
+    position: absolute;
+    bottom: 30px;
+    z-index: 10;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(45deg, #00f0ff, #ff007f);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wish-btn.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    animation: floatBtn 2s infinite alternate ease-in-out;
+}
+
+.wish-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(255, 0, 127, 0.9);
+}
+
+@keyframes floatBtn {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
+
+/* Right Section */
 .right {
     background: #0d0e15;
     color: #fff;
@@ -203,6 +241,82 @@ canvas#main-canvas {
 .codebox::-webkit-scrollbar { width: 6px; }
 .codebox::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
 
+/* ================= WISH MODAL OVERLAY ================= */
+.wish-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background: rgba(5, 5, 8, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+.wish-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.wish-card {
+    background: linear-gradient(135deg, rgba(255,0,127,0.15), rgba(0,240,255,0.15));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 40px rgba(255, 0, 127, 0.4);
+    border-radius: 24px;
+    padding: 35px 30px;
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    transform: scale(0.8) translateY(30px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wish-modal.active .wish-card {
+    transform: scale(1) translateY(0);
+}
+
+.wish-card h3 {
+    font-size: 26px;
+    font-weight: 800;
+    background: linear-gradient(45deg, #ff007f, #00f0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.wish-card p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #f3f4f6;
+    margin-bottom: 25px;
+    font-weight: 400;
+    word-break: break-word;
+}
+
+.close-modal-btn {
+    padding: 10px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-modal-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
 /* Responsive Mobile Layout */
 @media (max-width: 900px) {
     .container {
@@ -214,6 +328,10 @@ canvas#main-canvas {
     .codebox { font-size: 11px; padding: 12px; }
     .hbd-title { font-size: 30px; }
     .countdown-number { font-size: 75px; }
+    .wish-btn { bottom: 15px; padding: 10px 22px; font-size: 14px; }
+    .wish-card { padding: 25px 20px; }
+    .wish-card h3 { font-size: 22px; }
+    .wish-card p { font-size: 15px; }
 }
 </style>
 </head>
@@ -235,10 +353,20 @@ canvas#main-canvas {
 <div class="container" id="main-container">
     <div class="left">
         <canvas id="main-canvas"></canvas>
+        <button id="wish-btn" class="wish-btn" onclick="openWishModal()">คลิกเพื่ออ่านคำอวยพร 💌</button>
     </div>
     <div class="right">
         <h2><span>⚡</span> Python Heart Code</h2>
         <div class="codebox" id="code"></div>
+    </div>
+</div>
+
+<!-- BIRTHDAY WISH MODAL -->
+<div id="wish-modal" class="wish-modal">
+    <div class="wish-card">
+        <h3>✨ Special Birthday Wish ✨</h3>
+        <p>สุขสันต์วันเกิดคั้บเมย์ ขอให้เมย์มีความสุขมากๆนะเพื่อน ขอให้ติดมหาลับในอีกไม่กี่เดือนข้างหน้า ขอให้มีอนาคตดีๆนะ happy birthday ค้าบบบ 🎓🎉💖</p>
+        <button class="close-modal-btn" onclick="closeWishModal()">ปิดหน้านี้ ✕</button>
     </div>
 </div>
 
@@ -396,6 +524,7 @@ const TOTAL_PARTICLES = 450;
 const fullText = "HBD TO MAY";
 let textCharIndex = 0;
 let textFrameTimer = 0;
+let wishBtnTriggered = false;
 
 function getHeartPoint(t) {
     const x = 16 * Math.pow(Math.sin(t), 3);
@@ -514,12 +643,19 @@ function animateMain() {
         p.draw(baseScale, beatScale);
     }
 
-    // Letter-by-letter reveal speed controller
+    // Letter-by-letter reveal
     textFrameTimer++;
     if (textFrameTimer % 14 === 0 && textCharIndex < fullText.length) {
         textCharIndex++;
-        // Spawn particle sparkle at center when a new letter appears
         createBurst(canvas.width / 2, canvas.height / 2);
+    }
+
+    // Trigger Wish Button after text finishes writing
+    if (textCharIndex >= fullText.length && !wishBtnTriggered) {
+        wishBtnTriggered = true;
+        setTimeout(() => {
+            document.getElementById("wish-btn").classList.add("show");
+        }, 600);
     }
 
     // Render Grand Center Text
@@ -550,42 +686,47 @@ function drawGrandCenterText(scale, beatScale) {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // Big bold font scale
     const fontSize = Math.max(22, Math.floor(scale * 2.1 * beatScale));
     ctx.font = `900 ${fontSize}px 'Poppins', 'Mitr', sans-serif`;
 
     const cx = canvas.width / 2;
     const cy = canvas.height / 2;
 
-    // Text to display up to current index
     const visibleText = fullText.slice(0, textCharIndex);
 
-    // Multi-color Linear Gradient
     const textGradient = ctx.createLinearGradient(cx - 150, 0, cx + 150, 0);
     textGradient.addColorStop(0, "#ff007f");
     textGradient.addColorStop(0.5, "#ffeb3b");
     textGradient.addColorStop(1, "#00f0ff");
 
-    // Outer Neon Glow 1
     ctx.shadowBlur = 35;
     ctx.shadowColor = "#ff007f";
     ctx.fillStyle = textGradient;
     ctx.fillText(visibleText, cx, cy);
 
-    // Outer Neon Glow 2
     ctx.shadowBlur = 20;
     ctx.shadowColor = "#00f0ff";
     ctx.lineWidth = 2.5;
     ctx.strokeStyle = "#ffffff";
     ctx.strokeText(visibleText, cx, cy);
 
-    // Inner bright core
     ctx.shadowBlur = 5;
     ctx.shadowColor = "#ffffff";
     ctx.fillStyle = "#ffffff";
     ctx.fillText(visibleText, cx, cy);
 
     ctx.restore();
+}
+
+/* ================= 6. WISH MODAL FUNCTIONS ================= */
+function openWishModal() {
+    document.getElementById("wish-modal").classList.add("active");
+    // Trigger celebratory burst
+    createBurst(window.innerWidth / 2, window.innerHeight / 2);
+}
+
+function closeWishModal() {
+    document.getElementById("wish-modal").classList.remove("active");
 }
 </script>
 </body>
