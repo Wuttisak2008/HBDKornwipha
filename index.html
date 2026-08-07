@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>HBD TO MAY - Python Heart</title>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@400;600;800&family=Mitr:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@800;900&family=Mitr:wght@600;800&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -143,10 +143,10 @@ canvas#main-canvas {
 .left::before {
     content: "";
     position: absolute;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(255,0,120,0.25) 0%, rgba(0,240,255,0.1) 50%, transparent 70%);
-    filter: blur(80px);
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(255,0,120,0.3) 0%, rgba(0,240,255,0.15) 50%, transparent 70%);
+    filter: blur(85px);
     animation: auraPulse 3s infinite alternate ease-in-out;
 }
 
@@ -307,11 +307,11 @@ for i in range(360):
         t.backward(5)
         t.right(45)
 
-# Center Message
+# Write Big Animated Text
 t.penup()
 t.goto(0, 0)
 t.color("cyan")
-t.write("HBD TO MAY", align="center", font=("Poppins", 20, "bold"))
+t.write("HBD TO MAY", align="center", font=("Poppins", 24, "bold"))
 
 turtle.done()`;
 
@@ -384,13 +384,18 @@ function animateIntro() {
     requestAnimationFrame(animateIntro);
 }
 
-/* ================= 4. GRADUAL HEART DRAWING & CENTER TEXT ================= */
+/* ================= 4. GRAND HEART & LETTER-BY-LETTER TEXT ================= */
 let canvas, ctx;
 let heartParticles = [];
 let drawnCount = 0;
 let bgStars = [];
 let bursts = [];
-const TOTAL_PARTICLES = 450; // Number of heart outline stars
+const TOTAL_PARTICLES = 450;
+
+// Text Typing Animation States
+const fullText = "HBD TO MAY";
+let textCharIndex = 0;
+let textFrameTimer = 0;
 
 function getHeartPoint(t) {
     const x = 16 * Math.pow(Math.sin(t), 3);
@@ -435,15 +440,14 @@ function initMainCanvas() {
     window.addEventListener("resize", resize);
     resize();
 
-    // Generate ordered particles along the heart equation (0 to 2*PI)
     heartParticles = [];
     for (let i = 0; i < TOTAL_PARTICLES; i++) {
         const t = (i / TOTAL_PARTICLES) * Math.PI * 2;
         heartParticles.push(new HeartStar(t));
     }
     drawnCount = 0;
+    textCharIndex = 0;
 
-    // Background floating stars
     bgStars = [];
     for (let i = 0; i < 150; i++) {
         bgStars.push({
@@ -455,7 +459,6 @@ function initMainCanvas() {
         });
     }
 
-    // Touch / Click burst stars
     canvas.addEventListener("click", (e) => {
         const rect = canvas.getBoundingClientRect();
         createBurst(e.clientX - rect.left, e.clientY - rect.top);
@@ -465,13 +468,13 @@ function initMainCanvas() {
 }
 
 function createBurst(x, y) {
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 30; i++) {
         bursts.push({
             x, y,
-            vx: (Math.random() - 0.5) * 8,
-            vy: (Math.random() - 0.5) * 8,
+            vx: (Math.random() - 0.5) * 10,
+            vy: (Math.random() - 0.5) * 10,
             life: 1,
-            color: `hsl(${Math.random() * 360}, 100%, 70%)`
+            color: `hsl(${Math.random() * 360}, 100%, 75%)`
         });
     }
 }
@@ -479,12 +482,12 @@ function createBurst(x, y) {
 let tick = 0;
 function animateMain() {
     tick += 0.035;
-    const beatScale = 1 + Math.sin(tick) * 0.05; // Heartbeat motion
+    const beatScale = 1 + Math.sin(tick) * 0.05;
 
     ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw background stars
+    // Background stars
     ctx.fillStyle = "#fff";
     for (let s of bgStars) {
         ctx.beginPath();
@@ -498,12 +501,11 @@ function animateMain() {
 
     const baseScale = Math.min(canvas.width, canvas.height) / 42;
 
-    // Gradual drawing step-by-step
+    // Gradual drawing of heart
     if (drawnCount < TOTAL_PARTICLES) {
-        drawnCount += 2; // Speed of drawing path
+        drawnCount += 2;
     }
 
-    // Render drawn heart particles
     const limit = Math.min(drawnCount, TOTAL_PARTICLES);
     for (let i = 0; i < limit; i++) {
         const p = heartParticles[i];
@@ -512,20 +514,28 @@ function animateMain() {
         p.draw(baseScale, beatScale);
     }
 
-    // Render Center Text "HBD TO MAY"
-    drawCenterText(baseScale, beatScale);
+    // Letter-by-letter reveal speed controller
+    textFrameTimer++;
+    if (textFrameTimer % 14 === 0 && textCharIndex < fullText.length) {
+        textCharIndex++;
+        // Spawn particle sparkle at center when a new letter appears
+        createBurst(canvas.width / 2, canvas.height / 2);
+    }
 
-    // Click Fireworks Explosions
+    // Render Grand Center Text
+    drawGrandCenterText(baseScale, beatScale);
+
+    // Particle Bursts
     bursts.forEach((b, idx) => {
         b.x += b.vx;
         b.y += b.vy;
         b.life -= 0.025;
         ctx.fillStyle = b.color;
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 12;
         ctx.shadowColor = b.color;
         ctx.globalAlpha = Math.max(0, b.life);
         ctx.beginPath();
-        ctx.arc(b.x, b.y, 2.5, 0, Math.PI * 2);
+        ctx.arc(b.x, b.y, 2.8, 0, Math.PI * 2);
         ctx.fill();
         if (b.life <= 0) bursts.splice(idx, 1);
     });
@@ -534,31 +544,46 @@ function animateMain() {
     requestAnimationFrame(animateMain);
 }
 
-/* ================= 5. CENTER TEXT DRAWING ================= */
-function drawCenterText(scale, beatScale) {
+/* ================= 5. BIG ANIMATED CENTER TEXT ================= */
+function drawGrandCenterText(scale, beatScale) {
     ctx.save();
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // Responsive Font Size based on Screen / Heart Scale
-    const fontSize = Math.max(16, Math.floor(scale * 1.65 * beatScale));
-    ctx.font = `800 ${fontSize}px 'Poppins', 'Mitr', sans-serif`;
+    // Big bold font scale
+    const fontSize = Math.max(22, Math.floor(scale * 2.1 * beatScale));
+    ctx.font = `900 ${fontSize}px 'Poppins', 'Mitr', sans-serif`;
 
     const cx = canvas.width / 2;
     const cy = canvas.height / 2;
 
-    // Glowing Neon Background Effect
-    ctx.shadowBlur = 25;
-    ctx.shadowColor = "#ff007f";
-    ctx.fillStyle = "#ffffff";
-    ctx.fillText("HBD TO MAY", cx, cy);
+    // Text to display up to current index
+    const visibleText = fullText.slice(0, textCharIndex);
 
-    // Cyan Outline
-    ctx.shadowBlur = 15;
+    // Multi-color Linear Gradient
+    const textGradient = ctx.createLinearGradient(cx - 150, 0, cx + 150, 0);
+    textGradient.addColorStop(0, "#ff007f");
+    textGradient.addColorStop(0.5, "#ffeb3b");
+    textGradient.addColorStop(1, "#00f0ff");
+
+    // Outer Neon Glow 1
+    ctx.shadowBlur = 35;
+    ctx.shadowColor = "#ff007f";
+    ctx.fillStyle = textGradient;
+    ctx.fillText(visibleText, cx, cy);
+
+    // Outer Neon Glow 2
+    ctx.shadowBlur = 20;
     ctx.shadowColor = "#00f0ff";
-    ctx.lineWidth = 1.5;
-    ctx.strokeStyle = "#00f0ff";
-    ctx.strokeText("HBD TO MAY", cx, cy);
+    ctx.lineWidth = 2.5;
+    ctx.strokeStyle = "#ffffff";
+    ctx.strokeText(visibleText, cx, cy);
+
+    // Inner bright core
+    ctx.shadowBlur = 5;
+    ctx.shadowColor = "#ffffff";
+    ctx.fillStyle = "#ffffff";
+    ctx.fillText(visibleText, cx, cy);
 
     ctx.restore();
 }
