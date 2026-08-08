@@ -572,7 +572,7 @@ canvas#main-canvas {
            ขอให้ติดมหาลับในอีกไม่กี่เดือนข้างหน้า<br>
            ขอให้มีอนาคตดีๆนะ<br>
            happy birthday ค้าบบบกรวิภา 🎓🎉💖</p>
-        <button class="close-modal-btn" onclick="closeWishModal()">ปิดเพื่อปิด 📸</button>
+        <button class="close-modal-btn" onclick="closeWishModal()">ปิดเพื่อเปิด 📸</button>
     </div>
 </div>
 
@@ -583,7 +583,7 @@ canvas#main-canvas {
     <!-- Section 1: Fullscreen Phone Image -->
     <div class="hero-fullscreen">
         <div class="main-photo-card" id="main-photo-card">
-            <img id="main-featured-img" src="1.jpg" alt="Memory 1" onerror="this.src='1.png'">
+            <img id="main-featured-img" src="1.jpg" alt="Memory 1">
         </div>
         <div class="scroll-hint">
             <span>👇 เลื่อนลงข้างล่างเพื่อดูรูปย่อยอื่นๆ นะ ✨</span>
@@ -596,19 +596,19 @@ canvas#main-canvas {
         <div class="sub-photos-title">📸 รูปภาพความทรงจำทั้งหมด</div>
         <div class="sub-photos-grid">
             <div class="sub-photo-item active" onclick="changeMainPhoto('1.jpg', this)">
-                <img src="1.jpg" alt="Photo 1" onerror="this.src='1.png'">
+                <img src="1.jpg" alt="Photo 1">
             </div>
             <div class="sub-photo-item" onclick="changeMainPhoto('2.jpg', this)">
-                <img src="2.jpg" alt="Photo 2" onerror="this.src='2.png'">
+                <img src="2.jpg" alt="Photo 2">
             </div>
             <div class="sub-photo-item" onclick="changeMainPhoto('3.jpg', this)">
-                <img src="3.jpg" alt="Photo 3" onerror="this.src='3.png'">
+                <img src="3.jpg" alt="Photo 3">
             </div>
             <div class="sub-photo-item" onclick="changeMainPhoto('4.jpg', this)">
-                <img src="4.jpg" alt="Photo 4" onerror="this.src='4.png'">
+                <img src="4.jpg" alt="Photo 4">
             </div>
             <div class="sub-photo-item" onclick="changeMainPhoto('5.jpg', this)">
-                <img src="5.jpg" alt="Photo 5" onerror="this.src='5.png'">
+                <img src="5.jpg" alt="Photo 5">
             </div>
         </div>
     </div>
@@ -997,12 +997,12 @@ function closeGalleryModal() {
     document.getElementById("gallery-modal").classList.remove("active");
 }
 
-function changeMainPhoto(primarySrc, fallbackSrc, element) {
+/* แก้ไขฟังก์ชันเปลี่ยนรูปให้รับค่าพารามิเตอร์ถูกต้อง */
+function changeMainPhoto(primarySrc, element) {
     const mainImg = document.getElementById("main-featured-img");
     const card = document.getElementById("main-photo-card");
 
     mainImg.src = primarySrc;
-    mainImg.onerror = () => { mainImg.src = fallbackSrc; };
 
     // Re-trigger animation effect on change
     card.classList.remove("surprise-anim");
