@@ -19,7 +19,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #050508;
+    background: #081220;
     color: #fff;
 }
 
@@ -30,7 +30,7 @@ html, body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #fff;
+    background: #e0f2fe;
     z-index: 2500;
     pointer-events: none;
     opacity: 0;
@@ -50,7 +50,7 @@ html, body {
     width: 100%;
     height: 100%;
     z-index: 999;
-    background: radial-gradient(circle at center, #1a0022 0%, #050508 100%);
+    background: radial-gradient(circle at center, #1e293b 0%, #081220 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,17 +77,17 @@ html, body {
 .countdown-number {
     font-size: 100px;
     font-weight: 800;
-    background: linear-gradient(45deg, #ff007f, #00f0ff);
+    background: linear-gradient(45deg, #38bdf8, #818cf8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px rgba(255, 0, 127, 0.5);
+    text-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
     animation: pulseText 1s infinite alternate;
 }
 
 .hbd-title {
     font-size: 40px;
     font-weight: 800;
-    background: linear-gradient(45deg, #ff007f, #ffeb3b, #00e5ff);
+    background: linear-gradient(45deg, #38bdf8, #a78bfa, #f472b6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
@@ -98,7 +98,7 @@ html, body {
 
 .hbd-subtitle {
     font-size: 18px;
-    color: #d1d5db;
+    color: #bae6fd;
     margin-bottom: 30px;
     opacity: 0;
     transition: opacity 1s ease 0.3s;
@@ -109,11 +109,11 @@ html, body {
     font-size: 18px;
     font-weight: 600;
     color: #fff;
-    background: linear-gradient(45deg, #ff007f, #7928ca);
+    background: linear-gradient(45deg, #38bdf8, #6366f1);
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.5s ease 0.5s;
@@ -121,7 +121,7 @@ html, body {
 
 .enter-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 35px rgba(255, 0, 127, 0.9);
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.9);
 }
 
 .show-element {
@@ -149,7 +149,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #000;
+    background: #050c18;
     overflow: hidden;
 }
 
@@ -164,7 +164,7 @@ canvas#main-canvas {
     position: absolute;
     width: 480px;
     height: 480px;
-    background: radial-gradient(circle, rgba(255,0,120,0.3) 0%, rgba(0,240,255,0.15) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(56,189,248,0.35) 0%, rgba(147,197,253,0.18) 50%, transparent 70%);
     filter: blur(85px);
     animation: auraPulse 3s infinite alternate ease-in-out;
 }
@@ -183,11 +183,11 @@ canvas#main-canvas {
     font-size: 16px;
     font-weight: 700;
     color: #fff;
-    background: linear-gradient(45deg, #00f0ff, #ff007f);
+    background: linear-gradient(45deg, #38bdf8, #a78bfa);
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
     opacity: 0;
     transform: translateY(20px) scale(0.9);
     pointer-events: none;
@@ -203,7 +203,7 @@ canvas#main-canvas {
 
 .wish-btn:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 30px rgba(255, 0, 127, 0.9);
+    box-shadow: 0 0 30px rgba(167, 139, 250, 0.9);
 }
 
 @keyframes floatBtn {
@@ -213,12 +213,12 @@ canvas#main-canvas {
 
 /* Right Section */
 .right {
-    background: #0d0e15;
+    background: #0f172a;
     color: #fff;
     padding: 30px;
     display: flex;
     flex-direction: column;
-    border-left: 1px solid rgba(255,255,255,0.08);
+    border-left: 1px solid rgba(147, 197, 253, 0.15);
     box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     overflow: hidden;
 }
@@ -227,8 +227,8 @@ canvas#main-canvas {
     margin-bottom: 15px;
     font-size: 24px;
     font-weight: 600;
-    color: #00f0ff;
-    text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+    color: #38bdf8;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -236,29 +236,29 @@ canvas#main-canvas {
 
 .codebox {
     flex: 1;
-    background: #13141f;
+    background: #1e293b;
     border-radius: 12px;
     padding: 20px;
     font-family: 'Fira Code', monospace;
     font-size: 13.5px;
     line-height: 1.6;
-    color: #a9b7c6;
+    color: #e2e8f0;
     white-space: pre-wrap;
-    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
+    border: 1px solid rgba(147, 197, 253, 0.1);
     overflow-y: auto;
 }
 
 /* Syntax Highlighting */
-.codebox .kwd { color: #ff79c6; font-weight: 600; }
-.codebox .imp { color: #bd93f9; }
-.codebox .fn  { color: #50fa7b; }
-.codebox .str { color: #f1fa8c; }
-.codebox .num { color: #ffb86c; }
-.codebox .com { color: #6272a4; font-style: italic; }
+.codebox .kwd { color: #f472b6; font-weight: 600; }
+.codebox .imp { color: #c084fc; }
+.codebox .fn  { color: #38bdf8; }
+.codebox .str { color: #fef08a; }
+.codebox .num { color: #fb923c; }
+.codebox .com { color: #94a3b8; font-style: italic; }
 
 .codebox::-webkit-scrollbar { width: 6px; }
-.codebox::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+.codebox::-webkit-scrollbar-thumb { background: rgba(147, 197, 253, 0.3); border-radius: 4px; }
 
 /* ================= WISH MODAL OVERLAY ================= */
 .wish-modal {
@@ -268,7 +268,7 @@ canvas#main-canvas {
     width: 100%;
     height: 100%;
     z-index: 1000;
-    background: rgba(5, 5, 8, 0.85);
+    background: rgba(8, 18, 32, 0.85);
     backdrop-filter: blur(12px);
     display: flex;
     justify-content: center;
@@ -285,9 +285,9 @@ canvas#main-canvas {
 }
 
 .wish-card {
-    background: linear-gradient(135deg, rgba(255,0,127,0.15), rgba(0,240,255,0.15));
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 40px rgba(255, 0, 127, 0.4);
+    background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(167,139,250,0.2));
+    border: 1px solid rgba(147, 197, 253, 0.3);
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
     border-radius: 24px;
     padding: 35px 30px;
     max-width: 520px;
@@ -305,7 +305,7 @@ canvas#main-canvas {
 .wish-card h3 {
     font-size: 26px;
     font-weight: 800;
-    background: linear-gradient(45deg, #ff007f, #00f0ff);
+    background: linear-gradient(45deg, #38bdf8, #a78bfa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
@@ -314,7 +314,7 @@ canvas#main-canvas {
 .wish-card p {
     font-size: 17px;
     line-height: 1.8;
-    color: #f3f4f6;
+    color: #f0f9ff;
     margin-bottom: 25px;
     font-weight: 400;
     word-break: break-word;
@@ -325,17 +325,17 @@ canvas#main-canvas {
     font-size: 16px;
     font-weight: 700;
     color: #fff;
-    background: linear-gradient(45deg, #ff007f, #00f0ff);
+    background: linear-gradient(45deg, #38bdf8, #818cf8);
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
     transition: all 0.3s ease;
 }
 
 .close-modal-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 30px rgba(129, 140, 248, 0.8);
 }
 
 /* ================= FULLSCREEN PHOTO GALLERY ================= */
@@ -346,7 +346,7 @@ canvas#main-canvas {
     width: 100%;
     height: 100%;
     z-index: 2000;
-    background: #050508;
+    background: #081220;
     opacity: 0;
     visibility: hidden;
     overflow-y: auto;
@@ -364,8 +364,8 @@ canvas#main-canvas {
     top: 20px;
     right: 20px;
     z-index: 2100;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(147, 197, 253, 0.4);
     color: #fff;
     width: 44px;
     height: 44px;
@@ -378,7 +378,7 @@ canvas#main-canvas {
 }
 
 .gallery-close-btn:hover {
-    background: rgba(255, 0, 127, 0.8);
+    background: rgba(56, 189, 248, 0.8);
     transform: rotate(90deg);
 }
 
@@ -391,7 +391,7 @@ canvas#main-canvas {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #000;
+    background: #050c18;
     overflow: hidden;
 }
 
@@ -409,7 +409,7 @@ canvas#main-canvas {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: drop-shadow(0 0 20px rgba(255,0,120,0.4));
+    filter: drop-shadow(0 0 20px rgba(56,189,248,0.4));
 }
 
 /* Surprise Shock Animation */
@@ -435,11 +435,11 @@ canvas#main-canvas {
     align-items: center;
     gap: 8px;
     color: #fff;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(15, 23, 42, 0.75);
     padding: 10px 22px;
     border-radius: 30px;
-    border: 1px solid rgba(0, 240, 255, 0.5);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    border: 1px solid rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
     backdrop-filter: blur(8px);
     z-index: 10;
     animation: bounceHint 1.8s infinite ease-in-out;
@@ -450,13 +450,13 @@ canvas#main-canvas {
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    color: #00f0ff;
-    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+    color: #38bdf8;
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
 }
 
 .scroll-hint .arrow {
     font-size: 18px;
-    color: #ff007f;
+    color: #a78bfa;
 }
 
 @keyframes bounceHint {
@@ -474,10 +474,10 @@ canvas#main-canvas {
 .sub-photos-title {
     font-size: 22px;
     font-weight: 700;
-    color: #00f0ff;
+    color: #38bdf8;
     margin-bottom: 20px;
     text-align: center;
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
 .sub-photos-grid {
@@ -491,9 +491,9 @@ canvas#main-canvas {
     border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(147, 197, 253, 0.2);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: #13141f;
+    background: #1e293b;
 }
 
 .sub-photo-item img {
@@ -505,13 +505,13 @@ canvas#main-canvas {
 
 .sub-photo-item:hover {
     transform: translateY(-6px) scale(1.03);
-    border-color: #00f0ff;
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+    border-color: #38bdf8;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
 }
 
 .sub-photo-item.active {
-    border-color: #ff007f;
-    box-shadow: 0 0 22px rgba(255, 0, 127, 0.8);
+    border-color: #a78bfa;
+    box-shadow: 0 0 22px rgba(167, 139, 250, 0.8);
 }
 
 /* Responsive Mobile Layout */
@@ -604,8 +604,8 @@ canvas#main-canvas {
             <div class="sub-photo-item" onclick="changeMainPhoto('images/3.jpg', this)">
                 <img src="images/3.jpg" alt="Photo 3">
             </div>
-            <div class="sub-photo-item" onclick="changeMainPhoto('images/4.png', this)">
-                <img src="images/4.png" alt="Photo 4">
+            <div class="sub-photo-item" onclick="changeMainPhoto('images/4.jpg', this)">
+                <img src="images/4.jpg" alt="Photo 4">
             </div>
             <div class="sub-photo-item" onclick="changeMainPhoto('images/5.jpg', this)">
                 <img src="images/5.jpg" alt="Photo 5">
@@ -655,13 +655,13 @@ import random
 
 # Happy Birthday MAY!
 screen = turtle.Screen()
-screen.bgcolor("black")
+screen.bgcolor("#081220")
 
 t = turtle.Turtle()
 t.speed(0)
 t.hideturtle()
 
-colors = ["#ff007f", "#00f0ff", "#ffeb3b", "#ffffff"]
+colors = ["#38bdf8", "#60a5fa", "#93c5fd", "#c084fc", "#ffffff"]
 
 # Drawing Heart Curve Step-by-Step
 for i in range(360):
@@ -682,7 +682,7 @@ for i in range(360):
 # Write Big Animated Text
 t.penup()
 t.goto(0, 0)
-t.color("cyan")
+t.color("#38bdf8")
 t.write("HBD TO MAY", align="center", font=("Poppins", 24, "bold"))
 
 turtle.done()`;
@@ -729,7 +729,7 @@ function createIntroFireworks() {
             vx: (Math.random() - 0.5) * 14,
             vy: (Math.random() - 0.5) * 14,
             size: Math.random() * 4 + 1,
-            color: `hsl(${Math.random() * 360}, 100%, 65%)`,
+            color: `hsl(${190 + Math.random() * 60}, 90%, 65%)`,
             alpha: 1
         });
     }
@@ -738,7 +738,7 @@ function createIntroFireworks() {
 
 function animateIntro() {
     if (document.getElementById("intro-screen").style.visibility === "hidden") return;
-    iCtx.fillStyle = "rgba(5, 5, 8, 0.2)";
+    iCtx.fillStyle = "rgba(8, 18, 32, 0.2)";
     iCtx.fillRect(0, 0, introCanvas.width, introCanvas.height);
 
     introParticles.forEach((p, idx) => {
@@ -778,7 +778,7 @@ function getHeartPoint(t) {
 class HeartStar {
     constructor(t) {
         this.t = t;
-        this.color = `hsl(${(t / (Math.PI * 2)) * 360}, 100%, 65%)`;
+        this.color = `hsl(${190 + (t / (Math.PI * 2)) * 70}, 95%, 65%)`;
         this.size = 1.8 + Math.random() * 2;
     }
 
@@ -846,7 +846,7 @@ function createBurst(x, y) {
             vx: (Math.random() - 0.5) * 12,
             vy: (Math.random() - 0.5) * 12,
             life: 1,
-            color: `hsl(${Math.random() * 360}, 100%, 75%)`
+            color: `hsl(${180 + Math.random() * 80}, 90%, 75%)`
         });
     }
 }
@@ -856,7 +856,7 @@ function animateMain() {
     tick += 0.035;
     const beatScale = 1 + Math.sin(tick) * 0.05;
 
-    ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
+    ctx.fillStyle = "rgba(5, 12, 24, 0.18)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = "#fff";
@@ -931,17 +931,17 @@ function drawGrandCenterText(scale, beatScale) {
     const visibleText = fullText.slice(0, textCharIndex);
 
     const textGradient = ctx.createLinearGradient(cx - 150, 0, cx + 150, 0);
-    textGradient.addColorStop(0, "#ff007f");
-    textGradient.addColorStop(0.5, "#ffeb3b");
-    textGradient.addColorStop(1, "#00f0ff");
+    textGradient.addColorStop(0, "#38bdf8");
+    textGradient.addColorStop(0.5, "#818cf8");
+    textGradient.addColorStop(1, "#f472b6");
 
     ctx.shadowBlur = 35;
-    ctx.shadowColor = "#ff007f";
+    ctx.shadowColor = "#38bdf8";
     ctx.fillStyle = textGradient;
     ctx.fillText(visibleText, cx, cy);
 
     ctx.shadowBlur = 20;
-    ctx.shadowColor = "#00f0ff";
+    ctx.shadowColor = "#818cf8";
     ctx.lineWidth = 2.5;
     ctx.strokeStyle = "#ffffff";
     ctx.strokeText(visibleText, cx, cy);
