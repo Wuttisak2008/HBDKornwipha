@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>HBD TO MAY - Python Heart</title>
+<title>HBD TO MAY - Python</title>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@800;900&family=Mitr:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -19,7 +19,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #081220;
+    background: #1f0817;
     color: #fff;
 }
 
@@ -30,7 +30,7 @@ html, body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #e0f2fe;
+    background: #ffe4e6;
     z-index: 2500;
     pointer-events: none;
     opacity: 0;
@@ -50,7 +50,7 @@ html, body {
     width: 100%;
     height: 100%;
     z-index: 999;
-    background: radial-gradient(circle at center, #1e293b 0%, #081220 100%);
+    background: radial-gradient(circle at center, #3b102b 0%, #1a0513 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,17 +77,17 @@ html, body {
 .countdown-number {
     font-size: 100px;
     font-weight: 800;
-    background: linear-gradient(45deg, #38bdf8, #818cf8);
+    background: linear-gradient(45deg, #ff758f, #ffb3c1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+    text-shadow: 0 0 30px rgba(255, 117, 143, 0.6);
     animation: pulseText 1s infinite alternate;
 }
 
 .hbd-title {
     font-size: 40px;
     font-weight: 800;
-    background: linear-gradient(45deg, #38bdf8, #a78bfa, #f472b6);
+    background: linear-gradient(45deg, #ff4d6d, #ff85a1, #f472b6, #fbcfe8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
@@ -98,7 +98,7 @@ html, body {
 
 .hbd-subtitle {
     font-size: 18px;
-    color: #bae6fd;
+    color: #fbcfe8;
     margin-bottom: 30px;
     opacity: 0;
     transition: opacity 1s ease 0.3s;
@@ -109,11 +109,11 @@ html, body {
     font-size: 18px;
     font-weight: 600;
     color: #fff;
-    background: linear-gradient(45deg, #38bdf8, #6366f1);
+    background: linear-gradient(45deg, #ff4d6d, #ff758f, #f43f5e);
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 25px rgba(255, 77, 109, 0.7);
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.5s ease 0.5s;
@@ -121,7 +121,7 @@ html, body {
 
 .enter-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 35px rgba(56, 189, 248, 0.9);
+    box-shadow: 0 0 35px rgba(255, 77, 109, 0.9);
 }
 
 .show-element {
@@ -149,7 +149,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #050c18;
+    background: #15040f;
     overflow: hidden;
 }
 
@@ -164,7 +164,7 @@ canvas#main-canvas {
     position: absolute;
     width: 480px;
     height: 480px;
-    background: radial-gradient(circle, rgba(56,189,248,0.35) 0%, rgba(147,197,253,0.18) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,117,143,0.4) 0%, rgba(251,207,232,0.2) 50%, transparent 70%);
     filter: blur(85px);
     animation: auraPulse 3s infinite alternate ease-in-out;
 }
@@ -183,11 +183,11 @@ canvas#main-canvas {
     font-size: 16px;
     font-weight: 700;
     color: #fff;
-    background: linear-gradient(45deg, #38bdf8, #a78bfa);
+    background: linear-gradient(45deg, #ff4d6d, #f472b6);
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.7);
     opacity: 0;
     transform: translateY(20px) scale(0.9);
     pointer-events: none;
@@ -203,7 +203,7 @@ canvas#main-canvas {
 
 .wish-btn:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 30px rgba(167, 139, 250, 0.9);
+    box-shadow: 0 0 30px rgba(244, 114, 182, 0.9);
 }
 
 @keyframes floatBtn {
@@ -213,12 +213,12 @@ canvas#main-canvas {
 
 /* Right Section */
 .right {
-    background: #0f172a;
+    background: #230919;
     color: #fff;
     padding: 30px;
     display: flex;
     flex-direction: column;
-    border-left: 1px solid rgba(147, 197, 253, 0.15);
+    border-left: 1px solid rgba(251, 207, 232, 0.2);
     box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     overflow: hidden;
 }
@@ -227,8 +227,8 @@ canvas#main-canvas {
     margin-bottom: 15px;
     font-size: 24px;
     font-weight: 600;
-    color: #38bdf8;
-    text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+    color: #ff85a1;
+    text-shadow: 0 0 12px rgba(255, 133, 161, 0.5);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -236,29 +236,29 @@ canvas#main-canvas {
 
 .codebox {
     flex: 1;
-    background: #1e293b;
-    border-radius: 12px;
+    background: #2d0d21;
+    border-radius: 16px;
     padding: 20px;
     font-family: 'Fira Code', monospace;
     font-size: 13.5px;
     line-height: 1.6;
-    color: #e2e8f0;
+    color: #fce7f3;
     white-space: pre-wrap;
     box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
-    border: 1px solid rgba(147, 197, 253, 0.1);
+    border: 1px solid rgba(251, 207, 232, 0.15);
     overflow-y: auto;
 }
 
 /* Syntax Highlighting */
-.codebox .kwd { color: #f472b6; font-weight: 600; }
-.codebox .imp { color: #c084fc; }
-.codebox .fn  { color: #38bdf8; }
+.codebox .kwd { color: #f43f5e; font-weight: 600; }
+.codebox .imp { color: #fb7185; }
+.codebox .fn  { color: #ff85a1; }
 .codebox .str { color: #fef08a; }
-.codebox .num { color: #fb923c; }
-.codebox .com { color: #94a3b8; font-style: italic; }
+.codebox .num { color: #f9a8d4; }
+.codebox .com { color: #fda4af; font-style: italic; opacity: 0.85; }
 
 .codebox::-webkit-scrollbar { width: 6px; }
-.codebox::-webkit-scrollbar-thumb { background: rgba(147, 197, 253, 0.3); border-radius: 4px; }
+.codebox::-webkit-scrollbar-thumb { background: rgba(251, 207, 232, 0.3); border-radius: 4px; }
 
 /* ================= WISH MODAL OVERLAY ================= */
 .wish-modal {
@@ -268,7 +268,7 @@ canvas#main-canvas {
     width: 100%;
     height: 100%;
     z-index: 1000;
-    background: rgba(8, 18, 32, 0.85);
+    background: rgba(26, 5, 19, 0.88);
     backdrop-filter: blur(12px);
     display: flex;
     justify-content: center;
@@ -285,10 +285,10 @@ canvas#main-canvas {
 }
 
 .wish-card {
-    background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(167,139,250,0.2));
-    border: 1px solid rgba(147, 197, 253, 0.3);
-    box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
-    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255,117,143,0.25), rgba(244,114,182,0.25));
+    border: 1px solid rgba(251, 207, 232, 0.4);
+    box-shadow: 0 0 45px rgba(255, 77, 109, 0.45);
+    border-radius: 28px;
     padding: 35px 30px;
     max-width: 520px;
     width: 100%;
@@ -305,7 +305,7 @@ canvas#main-canvas {
 .wish-card h3 {
     font-size: 26px;
     font-weight: 800;
-    background: linear-gradient(45deg, #38bdf8, #a78bfa);
+    background: linear-gradient(45deg, #ff4d6d, #ff85a1, #f472b6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
@@ -314,7 +314,7 @@ canvas#main-canvas {
 .wish-card p {
     font-size: 17px;
     line-height: 1.8;
-    color: #f0f9ff;
+    color: #fff0f5;
     margin-bottom: 25px;
     font-weight: 400;
     word-break: break-word;
@@ -325,17 +325,17 @@ canvas#main-canvas {
     font-size: 16px;
     font-weight: 700;
     color: #fff;
-    background: linear-gradient(45deg, #38bdf8, #818cf8);
+    background: linear-gradient(45deg, #ff4d6d, #f472b6);
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
     transition: all 0.3s ease;
 }
 
 .close-modal-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(129, 140, 248, 0.8);
+    box-shadow: 0 0 30px rgba(244, 114, 182, 0.8);
 }
 
 /* ================= FULLSCREEN PHOTO GALLERY ================= */
@@ -346,7 +346,7 @@ canvas#main-canvas {
     width: 100%;
     height: 100%;
     z-index: 2000;
-    background: #081220;
+    background: #1f0817;
     opacity: 0;
     visibility: hidden;
     overflow-y: auto;
@@ -364,8 +364,8 @@ canvas#main-canvas {
     top: 20px;
     right: 20px;
     z-index: 2100;
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(147, 197, 253, 0.4);
+    background: rgba(35, 9, 25, 0.8);
+    border: 1px solid rgba(251, 207, 232, 0.4);
     color: #fff;
     width: 44px;
     height: 44px;
@@ -378,7 +378,7 @@ canvas#main-canvas {
 }
 
 .gallery-close-btn:hover {
-    background: rgba(56, 189, 248, 0.8);
+    background: rgba(255, 77, 109, 0.8);
     transform: rotate(90deg);
 }
 
@@ -391,7 +391,7 @@ canvas#main-canvas {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #050c18;
+    background: #15040f;
     overflow: hidden;
 }
 
@@ -409,7 +409,7 @@ canvas#main-canvas {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: drop-shadow(0 0 20px rgba(56,189,248,0.4));
+    filter: drop-shadow(0 0 20px rgba(255,117,143,0.4));
 }
 
 /* Surprise Shock Animation */
@@ -435,11 +435,11 @@ canvas#main-canvas {
     align-items: center;
     gap: 8px;
     color: #fff;
-    background: rgba(15, 23, 42, 0.75);
+    background: rgba(35, 9, 25, 0.8);
     padding: 10px 22px;
     border-radius: 30px;
-    border: 1px solid rgba(56, 189, 248, 0.5);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    border: 1px solid rgba(255, 133, 161, 0.5);
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
     backdrop-filter: blur(8px);
     z-index: 10;
     animation: bounceHint 1.8s infinite ease-in-out;
@@ -450,13 +450,13 @@ canvas#main-canvas {
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    color: #38bdf8;
-    text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+    color: #ff85a1;
+    text-shadow: 0 0 8px rgba(255, 133, 161, 0.6);
 }
 
 .scroll-hint .arrow {
     font-size: 18px;
-    color: #a78bfa;
+    color: #f472b6;
 }
 
 @keyframes bounceHint {
@@ -474,10 +474,10 @@ canvas#main-canvas {
 .sub-photos-title {
     font-size: 22px;
     font-weight: 700;
-    color: #38bdf8;
+    color: #ff85a1;
     margin-bottom: 20px;
     text-align: center;
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    text-shadow: 0 0 10px rgba(255, 133, 161, 0.5);
 }
 
 .sub-photos-grid {
@@ -491,9 +491,9 @@ canvas#main-canvas {
     border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
-    border: 2px solid rgba(147, 197, 253, 0.2);
+    border: 2px solid rgba(251, 207, 232, 0.25);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: #1e293b;
+    background: #2d0d21;
 }
 
 .sub-photo-item img {
@@ -505,13 +505,13 @@ canvas#main-canvas {
 
 .sub-photo-item:hover {
     transform: translateY(-6px) scale(1.03);
-    border-color: #38bdf8;
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+    border-color: #ff758f;
+    box-shadow: 0 0 20px rgba(255, 117, 143, 0.7);
 }
 
 .sub-photo-item.active {
-    border-color: #a78bfa;
-    box-shadow: 0 0 22px rgba(167, 139, 250, 0.8);
+    border-color: #f472b6;
+    box-shadow: 0 0 22px rgba(244, 114, 182, 0.85);
 }
 
 /* Responsive Mobile Layout */
@@ -545,9 +545,9 @@ canvas#main-canvas {
     <canvas id="intro-canvas"></canvas>
     <div class="intro-content">
         <div id="cd-number" class="countdown-number">5</div>
-        <h1 id="hbd-title" class="hbd-title">🎉 HAPPY BIRTHDAY! 🎂</h1>
+        <h1 id="hbd-title" class="hbd-title">🌸 HAPPY BIRTHDAY! 💖</h1>
         <p id="hbd-sub" class="hbd-subtitle">สุขสันต์วันเกิดนะลูกพ่อเตื๊อกแม่จันทร์✨</p>
-        <button id="enter-btn" class="enter-btn" onclick="startApp()">เปิดของขวัญจากชายภู💖</button>
+        <button id="enter-btn" class="enter-btn" onclick="startApp()">เปิดของขวัญจากชายภู 🎀</button>
     </div>
 </div>
 
@@ -558,7 +558,7 @@ canvas#main-canvas {
         <button id="wish-btn" class="wish-btn" onclick="openWishModal()">คลิกเพื่ออ่าน 💌</button>
     </div>
     <div class="right">
-        <h2><span>⚡</span> Python Heart Code</h2>
+        <h2><span>💖</span> Sweet Python Heart</h2>
         <div class="codebox" id="code"></div>
     </div>
 </div>
@@ -593,7 +593,7 @@ canvas#main-canvas {
 
     <!-- Section 2: Sub Photos Grid -->
     <div class="sub-photos-section">
-        <div class="sub-photos-title">📸 รูปภาพความทรงจำทั้งหมด</div>
+        <div class="sub-photos-title">📸 รูปภาพความทรงจำทั้งหมด 💖</div>
         <div class="sub-photos-grid">
             <div class="sub-photo-item active" onclick="changeMainPhoto('images/1.jpg', this)">
                 <img src="images/1.jpg" alt="Photo 1">
@@ -653,15 +653,15 @@ const rawPythonCode = `import turtle
 import math
 import random
 
-# Happy Birthday MAY!
+# Sweet Birthday Heart for MAY 💖
 screen = turtle.Screen()
-screen.bgcolor("#081220")
+screen.bgcolor("#15040f")
 
 t = turtle.Turtle()
 t.speed(0)
 t.hideturtle()
 
-colors = ["#38bdf8", "#60a5fa", "#93c5fd", "#c084fc", "#ffffff"]
+colors = ["#ff4d6d", "#ff758f", "#ff85a1", "#f472b6", "#fbcfe8", "#ffffff"]
 
 # Drawing Heart Curve Step-by-Step
 for i in range(360):
@@ -682,7 +682,7 @@ for i in range(360):
 # Write Big Animated Text
 t.penup()
 t.goto(0, 0)
-t.color("#38bdf8")
+t.color("#ff758f")
 t.write("HBD TO MAY", align="center", font=("Poppins", 24, "bold"))
 
 turtle.done()`;
@@ -729,7 +729,7 @@ function createIntroFireworks() {
             vx: (Math.random() - 0.5) * 14,
             vy: (Math.random() - 0.5) * 14,
             size: Math.random() * 4 + 1,
-            color: `hsl(${190 + Math.random() * 60}, 90%, 65%)`,
+            color: `hsl(${320 + Math.random() * 50}, 100%, 75%)`,
             alpha: 1
         });
     }
@@ -738,7 +738,7 @@ function createIntroFireworks() {
 
 function animateIntro() {
     if (document.getElementById("intro-screen").style.visibility === "hidden") return;
-    iCtx.fillStyle = "rgba(8, 18, 32, 0.2)";
+    iCtx.fillStyle = "rgba(26, 5, 19, 0.2)";
     iCtx.fillRect(0, 0, introCanvas.width, introCanvas.height);
 
     introParticles.forEach((p, idx) => {
@@ -778,7 +778,7 @@ function getHeartPoint(t) {
 class HeartStar {
     constructor(t) {
         this.t = t;
-        this.color = `hsl(${190 + (t / (Math.PI * 2)) * 70}, 95%, 65%)`;
+        this.color = `hsl(${320 + (t / (Math.PI * 2)) * 50}, 100%, 75%)`;
         this.size = 1.8 + Math.random() * 2;
     }
 
@@ -846,7 +846,7 @@ function createBurst(x, y) {
             vx: (Math.random() - 0.5) * 12,
             vy: (Math.random() - 0.5) * 12,
             life: 1,
-            color: `hsl(${180 + Math.random() * 80}, 90%, 75%)`
+            color: `hsl(${320 + Math.random() * 50}, 100%, 75%)`
         });
     }
 }
@@ -856,7 +856,7 @@ function animateMain() {
     tick += 0.035;
     const beatScale = 1 + Math.sin(tick) * 0.05;
 
-    ctx.fillStyle = "rgba(5, 12, 24, 0.18)";
+    ctx.fillStyle = "rgba(21, 4, 15, 0.18)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = "#fff";
@@ -931,17 +931,17 @@ function drawGrandCenterText(scale, beatScale) {
     const visibleText = fullText.slice(0, textCharIndex);
 
     const textGradient = ctx.createLinearGradient(cx - 150, 0, cx + 150, 0);
-    textGradient.addColorStop(0, "#38bdf8");
-    textGradient.addColorStop(0.5, "#818cf8");
+    textGradient.addColorStop(0, "#ff4d6d");
+    textGradient.addColorStop(0.5, "#ff85a1");
     textGradient.addColorStop(1, "#f472b6");
 
     ctx.shadowBlur = 35;
-    ctx.shadowColor = "#38bdf8";
+    ctx.shadowColor = "#ff4d6d";
     ctx.fillStyle = textGradient;
     ctx.fillText(visibleText, cx, cy);
 
     ctx.shadowBlur = 20;
-    ctx.shadowColor = "#818cf8";
+    ctx.shadowColor = "#f472b6";
     ctx.lineWidth = 2.5;
     ctx.strokeStyle = "#ffffff";
     ctx.strokeText(visibleText, cx, cy);
